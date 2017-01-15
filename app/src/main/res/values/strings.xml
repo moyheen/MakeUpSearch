@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MakeUpSearch</string>
+    <string name="welcome_message">What are you searching for today?</string>
 </resources>
