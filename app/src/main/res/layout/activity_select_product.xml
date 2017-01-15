@@ -10,25 +10,39 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="364dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:fontFamily="sans-serif"
+        android:gravity="center"
         android:text="@string/welcome_message"
-        android:textAlignment="center"
         android:textSize="@dimen/welcome_message_text_size"
-        tools:layout_editor_absoluteX="10dp"
-        tools:layout_editor_absoluteY="47dp"/>
+        android:layout_marginStart="8dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.13"/>
 
     <Button
         android:id="@+id/button_blush"
         style="@style/ProductButtonStyle"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="selectButtonClick"
         android:text="@string/blush"
-        tools:layout_editor_absoluteX="194dp"
-        tools:layout_editor_absoluteY="244dp"/>
+        android:layout_width="88dp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintTop_toTopOf="@+id/button_lipstick"
+        app:layout_constraintLeft_toRightOf="@+id/button_eyeliner"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"/>
 
     <Button
         android:id="@+id/button_bronzer"
@@ -37,8 +51,12 @@
         android:layout_height="wrap_content"
         android:onClick="selectButtonClick"
         android:text="@string/bronzer"
-        tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="188dp"/>
+        app:layout_constraintRight_toLeftOf="@+id/button_eyebrow"
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button_eyebrow"
+        tools:layout_constraintBaseline_creator="1"
+        android:layout_marginRight="4dp"/>
 
     <Button
         android:id="@+id/button_eyebrow"
@@ -47,18 +65,27 @@
         android:layout_height="wrap_content"
         android:onClick="selectButtonClick"
         android:text="@string/eyebrow"
-        tools:layout_editor_absoluteX="140dp"
-        tools:layout_editor_absoluteY="188dp"/>
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/button_lipstick"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"/>
 
     <Button
         android:id="@+id/button_eyeliner"
         style="@style/ProductButtonStyle"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="selectButtonClick"
         android:text="@string/eyeliner"
-        app:layout_constraintLeft_toLeftOf="@+id/textView"
-        tools:layout_editor_absoluteY="244dp"/>
+        android:layout_width="88dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button_blush"
+        tools:layout_constraintBaseline_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"/>
 
     <Button
         android:id="@+id/button_eyeshadow"
@@ -67,8 +94,13 @@
         android:layout_height="wrap_content"
         android:onClick="selectButtonClick"
         android:text="@string/eyeshadow"
-        app:layout_constraintRight_toRightOf="@+id/button_foundation"
-        tools:layout_editor_absoluteY="301dp"/>
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/button_eyebrow"
+        android:layout_marginTop="64dp"
+        app:layout_constraintTop_toBottomOf="@+id/button_eyebrow"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/button_eyebrow"/>
 
     <Button
         android:id="@+id/button_foundation"
@@ -77,8 +109,12 @@
         android:layout_height="wrap_content"
         android:onClick="selectButtonClick"
         android:text="@string/foundation"
-        tools:layout_editor_absoluteX="234dp"
-        tools:layout_editor_absoluteY="188dp"/>
+        android:layout_marginStart="4dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button_eyebrow"
+        tools:layout_constraintBaseline_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toRightOf="@+id/button_eyebrow"
+        android:layout_marginLeft="4dp"/>
 
     <Button
         android:id="@+id/button_lip_liner"
@@ -87,9 +123,13 @@
         android:layout_height="wrap_content"
         android:onClick="selectButtonClick"
         android:text="@string/lip_liner"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button_eyeshadow"
-        app:layout_constraintRight_toRightOf="@+id/button_eyebrow"
-        />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/button_foundation"
+        android:layout_marginTop="64dp"
+        app:layout_constraintTop_toBottomOf="@+id/button_foundation"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/button_foundation"/>
 
     <Button
         android:id="@+id/button_lipstick"
@@ -98,9 +138,12 @@
         android:layout_height="wrap_content"
         android:onClick="selectButtonClick"
         android:text="@string/lipstick"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button_blush"
-        tools:layout_editor_absoluteX="104dp"
-        />
+        app:layout_constraintRight_toLeftOf="@+id/button_mascara"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginTop="212dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/button_blush"/>
 
     <Button
         android:id="@+id/button_mascara"
@@ -109,8 +152,12 @@
         android:layout_height="wrap_content"
         android:onClick="selectButtonClick"
         android:text="@string/mascara"
-        app:layout_constraintRight_toRightOf="@+id/textView"
-        tools:layout_editor_absoluteY="244dp"/>
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button_lipstick"
+        tools:layout_constraintBaseline_creator="1"
+        android:layout_marginRight="8dp"/>
 
     <Button
         android:id="@+id/button_nail_polish"
@@ -119,7 +166,11 @@
         android:layout_height="wrap_content"
         android:onClick="selectButtonClick"
         android:text="@string/nail_polish"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button_lip_liner"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
         app:layout_constraintRight_toRightOf="@+id/button_bronzer"
-        />
+        android:layout_marginTop="64dp"
+        app:layout_constraintTop_toBottomOf="@+id/button_bronzer"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/button_bronzer"/>
 </android.support.constraint.ConstraintLayout>

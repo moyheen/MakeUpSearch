@@ -9,7 +9,6 @@
     </style>
 
     <style name="ProductButtonStyle" parent="Base.Widget.AppCompat.Button">
-        <item name="android:padding">8dp</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:background">@drawable/product_button_selector</item>
     </style>
