@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">MakeUpSearch</string>
     <string name="welcome_message">What are you searching for today?</string>
+    <string name="bronzer">bronzer</string>
+    <string name="blush">blush</string>
+    <string name="eyebrow">eyebrow</string>
+    <string name="eyeliner">eyeliner</string>
+    <string name="eyeshadow">eyeshadow</string>
+    <string name="foundation">foundation</string>
+    <string name="lip_liner">lip liner</string>
+    <string name="lipstick">lipstick</string>
+    <string name="mascara">mascara</string>
+    <string name="nail_polish">nail polish</string>
 </resources>

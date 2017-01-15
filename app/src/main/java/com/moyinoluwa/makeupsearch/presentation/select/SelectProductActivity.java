@@ -1,7 +1,10 @@
 package com.moyinoluwa.makeupsearch.presentation.select;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 
 import com.moyinoluwa.makeupsearch.R;
 
@@ -14,7 +17,15 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
     }
 
     @Override
-    public void switchActivity() {
-
+    public void switchActivity(String buttonName) {
+        Intent intent = new Intent(this, SelectProductActivity.class);
+        intent.putExtra("product_selected", buttonName);
+        startActivity(intent);
     }
+
+    public void selectButtonClick(View view) {
+        Button button = (Button) findViewById(view.getId());
+        switchActivity(button.getText().toString());
+    }
+
 }

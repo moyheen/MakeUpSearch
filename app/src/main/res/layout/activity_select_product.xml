@@ -8,17 +8,118 @@
     android:layout_height="match_parent"
     tools:context="com.moyinoluwa.makeupsearch.presentation.select.SelectProductActivity">
 
-
     <TextView
-        android:fontFamily="sans-serif"
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="364dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_horizontal_margin"
+        android:fontFamily="sans-serif"
         android:text="@string/welcome_message"
+        android:textAlignment="center"
         android:textSize="@dimen/welcome_message_text_size"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="47dp"/>
+
+    <Button
+        android:id="@+id/button_blush"
+        style="@style/ProductButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="selectButtonClick"
+        android:text="@string/blush"
+        tools:layout_editor_absoluteX="194dp"
+        tools:layout_editor_absoluteY="244dp"/>
+
+    <Button
+        android:id="@+id/button_bronzer"
+        style="@style/ProductButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="selectButtonClick"
+        android:text="@string/bronzer"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="188dp"/>
+
+    <Button
+        android:id="@+id/button_eyebrow"
+        style="@style/ProductButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="selectButtonClick"
+        android:text="@string/eyebrow"
+        tools:layout_editor_absoluteX="140dp"
+        tools:layout_editor_absoluteY="188dp"/>
+
+    <Button
+        android:id="@+id/button_eyeliner"
+        style="@style/ProductButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="selectButtonClick"
+        android:text="@string/eyeliner"
+        app:layout_constraintLeft_toLeftOf="@+id/textView"
+        tools:layout_editor_absoluteY="244dp"/>
+
+    <Button
+        android:id="@+id/button_eyeshadow"
+        style="@style/ProductButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="selectButtonClick"
+        android:text="@string/eyeshadow"
+        app:layout_constraintRight_toRightOf="@+id/button_foundation"
+        tools:layout_editor_absoluteY="301dp"/>
+
+    <Button
+        android:id="@+id/button_foundation"
+        style="@style/ProductButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="selectButtonClick"
+        android:text="@string/foundation"
+        tools:layout_editor_absoluteX="234dp"
+        tools:layout_editor_absoluteY="188dp"/>
+
+    <Button
+        android:id="@+id/button_lip_liner"
+        style="@style/ProductButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="selectButtonClick"
+        android:text="@string/lip_liner"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button_eyeshadow"
+        app:layout_constraintRight_toRightOf="@+id/button_eyebrow"
+        />
+
+    <Button
+        android:id="@+id/button_lipstick"
+        style="@style/ProductButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="selectButtonClick"
+        android:text="@string/lipstick"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button_blush"
+        tools:layout_editor_absoluteX="104dp"
+        />
+
+    <Button
+        android:id="@+id/button_mascara"
+        style="@style/ProductButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="selectButtonClick"
+        android:text="@string/mascara"
+        app:layout_constraintRight_toRightOf="@+id/textView"
+        tools:layout_editor_absoluteY="244dp"/>
+
+    <Button
+        android:id="@+id/button_nail_polish"
+        style="@style/ProductButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="selectButtonClick"
+        android:text="@string/nail_polish"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button_lip_liner"
+        app:layout_constraintRight_toRightOf="@+id/button_bronzer"
+        />
 </android.support.constraint.ConstraintLayout>

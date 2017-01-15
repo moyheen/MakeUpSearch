@@ -10,7 +10,7 @@ import com.moyinoluwa.makeupsearch.presentation.base.MvpView;
 public class SelectProductContract {
 
     interface View extends MvpView {
-        void switchActivity();
+        void switchActivity(String productName);
     }
 
     interface Presenter extends MvpPresenter<View> {
