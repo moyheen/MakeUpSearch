@@ -6,7 +6,7 @@
     android:id="@+id/activity_select"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.moyinoluwa.makeupsearch.presentation.select.SelectProductActivity">
+    tools:context="com.moyinoluwa.makeupsearch.presentation.select_product.SelectProductActivity">
 
     <TextView
         android:id="@+id/textView"

@@ -1,5 +1,8 @@
 package com.moyinoluwa.makeupsearch.presentation.select;
 
+import com.moyinoluwa.makeupsearch.presentation.select_product.SelectProductContract;
+import com.moyinoluwa.makeupsearch.presentation.select_product.SelectProductPresenter;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

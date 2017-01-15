@@ -1,4 +1,4 @@
-package com.moyinoluwa.makeupsearch.presentation.select;
+package com.moyinoluwa.makeupsearch.presentation.select_product;
 
 import android.content.Intent;
 import android.os.Bundle;

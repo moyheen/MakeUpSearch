@@ -1,4 +1,4 @@
-package com.moyinoluwa.makeupsearch.presentation.select;
+package com.moyinoluwa.makeupsearch.presentation.select_product;
 
 import com.moyinoluwa.makeupsearch.presentation.base.MvpPresenter;
 import com.moyinoluwa.makeupsearch.presentation.base.MvpView;
