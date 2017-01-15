@@ -1,25 +1,44 @@
 package com.moyinoluwa.makeupsearch.presentation.select_product;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Fade;
+import android.transition.Slide;
+import android.transition.TransitionManager;
+import android.transition.TransitionSet;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.moyinoluwa.makeupsearch.R;
 import com.moyinoluwa.makeupsearch.presentation.select_brand.SelectBrandActivity;
 
 public class SelectProductActivity extends AppCompatActivity implements SelectProductContract.View {
     String buttonName;
+    TextView textViewSearchIntro;
+    TextView textViewProductName;
+    LinearLayout linearLayoutContainer;
+    ConstraintLayout constraintLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_product);
+
+        textViewSearchIntro = (TextView) findViewById(R.id.textView_search_intro);
+        linearLayoutContainer = (LinearLayout) findViewById(R.id.activity_select_product);
+        constraintLayout = (ConstraintLayout) findViewById(R.id.constraint_container);
     }
 
     @Override
     public void switchActivity() {
         Intent intent = new Intent(this, SelectBrandActivity.class);
+        // TO:DO pass brand as intent extra too
         intent.putExtra("product_selected", buttonName);
         startActivity(intent);
     }
@@ -59,7 +78,27 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
                 break;
         }
 
-        switchActivity();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            TransitionManager.beginDelayedTransition(linearLayoutContainer,
+                    new TransitionSet()
+                            .addTransition(new Fade())
+                            .addTransition(new Slide(Gravity.START)));
+        }
+
+        linearLayoutContainer.removeView(constraintLayout);
+        linearLayoutContainer.removeView(textViewSearchIntro);
+        View child = getLayoutInflater().inflate(R.layout.layout_select_brand, null);
+        textViewProductName = (TextView) child.findViewById(R.id.textView_productname);
+
+        textViewProductName.setText(buttonName + " from...");
+
+        linearLayoutContainer.addView(child);
+
+
+        // switchActivity();
     }
 
+    public void selectBrandClick(View view) {
+        Toast.makeText(this, "brand clicked", Toast.LENGTH_SHORT).show();
+    }
 }
