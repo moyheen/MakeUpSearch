@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:onClick="selectButtonClick"
         android:text="@string/blush"
-        android:layout_width="88dp"
+        android:layout_width="wrap_content"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintTop_toTopOf="@+id/button_lipstick"
