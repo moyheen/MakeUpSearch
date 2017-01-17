@@ -495,10 +495,12 @@
             style="@style/ProductButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@id/button_smashbox"
+            android:layout_below="@id/button_orly"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_toEndOf="@id/button_revlon"
+            android:layout_toRightOf="@id/button_revlon"
             android:onClick="selectBrandClick"
             android:text="@string/wetnwild"/>
 
