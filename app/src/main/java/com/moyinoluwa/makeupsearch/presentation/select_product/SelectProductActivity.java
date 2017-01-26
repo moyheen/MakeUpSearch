@@ -1,13 +1,7 @@
 package com.moyinoluwa.makeupsearch.presentation.select_product;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.transition.Fade;
-import android.transition.Slide;
-import android.transition.TransitionManager;
-import android.transition.TransitionSet;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,6 +16,8 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
     LinearLayout linearLayoutContainer;
     LinearLayout selectProductContainer;
 
+    SelectProductContract.Presenter selectProductPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +26,8 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
         textViewSearchIntro = (TextView) findViewById(R.id.textView_search_intro);
         linearLayoutContainer = (LinearLayout) findViewById(R.id.activity_select_product);
         selectProductContainer = (LinearLayout) findViewById(R.id.select_product_container);
+
+        selectProductPresenter = new SelectProductPresenter();
     }
 
     @Override
@@ -40,56 +38,58 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
 //        startActivity(intent);
     }
 
-    public void selectButtonClick(View view) {
-
-        switch (view.getId()) {
-            case R.id.button_blush:
-                buttonName = "blush";
-                break;
-            case R.id.button_bronzer:
-                buttonName = "bronzer";
-                break;
-            case R.id.button_eyebrow:
-                buttonName = "eyebrow";
-                break;
-            case R.id.button_eyeliner:
-                buttonName = "eyeliner";
-                break;
-            case R.id.button_eyeshadow:
-                buttonName = "eyeshadow";
-                break;
-            case R.id.button_foundation:
-                buttonName = "foundation";
-                break;
-            case R.id.button_lip_liner:
-                buttonName = "lip liner";
-                break;
-            case R.id.button_lipstick:
-                buttonName = "lipstick";
-                break;
-            case R.id.button_mascara:
-                buttonName = "mascara";
-                break;
-            case R.id.button_nail_polish:
-                buttonName = "nail polish";
-                break;
-        }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            TransitionManager.beginDelayedTransition(linearLayoutContainer,
-                    new TransitionSet()
-                            .addTransition(new Fade())
-                            .addTransition(new Slide(Gravity.START)));
-        }
-
+    @Override
+    public void switchViewsAfterTransition() {
         linearLayoutContainer.removeView(selectProductContainer);
         linearLayoutContainer.removeView(textViewSearchIntro);
         View child = getLayoutInflater().inflate(R.layout.layout_select_brand, null);
         textViewProductName = (TextView) child.findViewById(R.id.textView_productname);
-
-        textViewProductName.setText(buttonName + " from...");
-
         linearLayoutContainer.addView(child);
+    }
+
+    @Override
+    public void setProductTextName() {
+        textViewProductName.setText(buttonName + " from...");
+    }
+
+    public void selectButtonClick(View view) {
+
+        switch (view.getId()) {
+            case R.id.button_blush:
+                selectProductPresenter.getButtonName(Button.BLUSH);
+                break;
+            case R.id.button_bronzer:
+                selectProductPresenter.getButtonName(Button.BRONZER);
+                break;
+            case R.id.button_eyebrow:
+                selectProductPresenter.getButtonName(Button.EYEBROW);
+                break;
+            case R.id.button_eyeliner:
+                selectProductPresenter.getButtonName(Button.EYELINER);
+                break;
+            case R.id.button_eyeshadow:
+                selectProductPresenter.getButtonName(Button.EYESHADOW);
+                break;
+            case R.id.button_foundation:
+                selectProductPresenter.getButtonName(Button.FOUNDATION);
+                break;
+            case R.id.button_lip_liner:
+                selectProductPresenter.getButtonName(Button.LIP_LINER);
+                break;
+            case R.id.button_lipstick:
+                selectProductPresenter.getButtonName(Button.LIPSTICK);
+                break;
+            case R.id.button_mascara:
+                selectProductPresenter.getButtonName(Button.MASCARA);
+                break;
+            case R.id.button_nail_polish:
+                selectProductPresenter.getButtonName(Button.NAIL_POLISH);
+                break;
+        }
+
+        selectProductPresenter.setTransition(linearLayoutContainer);
+        switchViewsAfterTransition();
+
     }
 
     public void selectBrandClick(View view) {

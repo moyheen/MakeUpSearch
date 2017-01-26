@@ -1,5 +1,7 @@
 package com.moyinoluwa.makeupsearch.presentation.select_product;
 
+import android.view.ViewGroup;
+
 import com.moyinoluwa.makeupsearch.presentation.base.MvpPresenter;
 import com.moyinoluwa.makeupsearch.presentation.base.MvpView;
 
@@ -10,10 +12,14 @@ import com.moyinoluwa.makeupsearch.presentation.base.MvpView;
 public class SelectProductContract {
 
     public interface View extends MvpView {
+        void switchViewsAfterTransition();
+        void setProductTextName();
         void switchActivity();
     }
 
     interface Presenter extends MvpPresenter<View> {
         void selectProduct();
+        String getButtonName(String name);
+        void setTransition(ViewGroup sceneRoot);
     }
 }
