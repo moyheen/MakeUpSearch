@@ -28,6 +28,7 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
         selectProductContainer = (LinearLayout) findViewById(R.id.select_product_container);
 
         selectProductPresenter = new SelectProductPresenter();
+        selectProductPresenter.attachView(this);
     }
 
     @Override
