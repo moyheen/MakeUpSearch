@@ -57,40 +57,40 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
 
         switch (view.getId()) {
             case R.id.button_blush:
-                selectProductPresenter.getButtonName(Button.BLUSH);
+                buttonName = selectProductPresenter.getButtonName(Button.BLUSH);
                 break;
             case R.id.button_bronzer:
-                selectProductPresenter.getButtonName(Button.BRONZER);
+                buttonName = selectProductPresenter.getButtonName(Button.BRONZER);
                 break;
             case R.id.button_eyebrow:
-                selectProductPresenter.getButtonName(Button.EYEBROW);
+                buttonName = selectProductPresenter.getButtonName(Button.EYEBROW);
                 break;
             case R.id.button_eyeliner:
-                selectProductPresenter.getButtonName(Button.EYELINER);
+                buttonName = selectProductPresenter.getButtonName(Button.EYELINER);
                 break;
             case R.id.button_eyeshadow:
-                selectProductPresenter.getButtonName(Button.EYESHADOW);
+                buttonName = selectProductPresenter.getButtonName(Button.EYESHADOW);
                 break;
             case R.id.button_foundation:
-                selectProductPresenter.getButtonName(Button.FOUNDATION);
+                buttonName = selectProductPresenter.getButtonName(Button.FOUNDATION);
                 break;
             case R.id.button_lip_liner:
-                selectProductPresenter.getButtonName(Button.LIP_LINER);
+                buttonName = selectProductPresenter.getButtonName(Button.LIP_LINER);
                 break;
             case R.id.button_lipstick:
-                selectProductPresenter.getButtonName(Button.LIPSTICK);
+                buttonName = selectProductPresenter.getButtonName(Button.LIPSTICK);
                 break;
             case R.id.button_mascara:
-                selectProductPresenter.getButtonName(Button.MASCARA);
+                buttonName = selectProductPresenter.getButtonName(Button.MASCARA);
                 break;
             case R.id.button_nail_polish:
-                selectProductPresenter.getButtonName(Button.NAIL_POLISH);
+                buttonName = selectProductPresenter.getButtonName(Button.NAIL_POLISH);
                 break;
         }
 
         selectProductPresenter.setTransition(linearLayoutContainer);
         switchViewsAfterTransition();
-
+        setProductTextName();
     }
 
     public void selectBrandClick(View view) {
