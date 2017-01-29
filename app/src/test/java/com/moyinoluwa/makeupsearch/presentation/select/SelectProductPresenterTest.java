@@ -18,13 +18,20 @@ public class SelectProductPresenterTest {
     @Mock
     SelectProductContract.View view;
 
-    SelectProductPresenter selectProductPresenter;
+    private SelectProductPresenter selectProductPresenter;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         selectProductPresenter = new SelectProductPresenter();
         selectProductPresenter.attachView(view);
+    }
+
+    @Test
+    public void setTransition_transitionPerformed_switchViews() {
+        selectProductPresenter.selectProduct();
+
+        verify(view).switchViewsAfterTransition();
     }
 
     @Test
