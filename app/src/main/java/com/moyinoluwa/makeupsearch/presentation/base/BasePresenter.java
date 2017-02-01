@@ -42,7 +42,7 @@ public class BasePresenter<T extends MvpView> implements MvpPresenter<T> {
         this.compositeSubscription.add(subscription);
     }
 
-    protected static class MvpViewNotAttachedException extends RuntimeException {
+    public static class MvpViewNotAttachedException extends RuntimeException {
         public MvpViewNotAttachedException() {
             super("Please call presenter.attachView(MvpView) before requesting data from the " +
                     "presenter");
