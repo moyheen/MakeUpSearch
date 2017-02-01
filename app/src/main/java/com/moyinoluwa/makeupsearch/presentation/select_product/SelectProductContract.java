@@ -12,6 +12,8 @@ import com.moyinoluwa.makeupsearch.presentation.base.MvpView;
 public class SelectProductContract {
 
     public interface View extends MvpView {
+        public void selectButtonClick(android.view.View view);
+        void setTransition(ViewGroup sceneRoot);
         void switchViewsAfterTransition();
         void setProductTextName();
         void switchActivity();
@@ -19,7 +21,5 @@ public class SelectProductContract {
 
     interface Presenter extends MvpPresenter<View> {
         void selectProduct();
-        String getButtonName(String name);
-        void setTransition(ViewGroup sceneRoot);
     }
 }

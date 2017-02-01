@@ -1,5 +1,7 @@
 package com.moyinoluwa.makeupsearch.presentation.select;
 
+import android.view.ViewGroup;
+
 import com.moyinoluwa.makeupsearch.presentation.select_product.SelectProductContract;
 import com.moyinoluwa.makeupsearch.presentation.select_product.SelectProductPresenter;
 
@@ -18,27 +20,26 @@ public class SelectProductPresenterTest {
     @Mock
     SelectProductContract.View view;
 
+    @Mock
+    ViewGroup viewGroup;
+
     private SelectProductPresenter selectProductPresenter;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        selectProductPresenter = new SelectProductPresenter();
+        selectProductPresenter = new SelectProductPresenter(viewGroup, viewGroup);
         selectProductPresenter.attachView(view);
     }
 
     @Test
-    public void setTransition_transitionPerformed_switchViews() {
+    public void selectProduct_transitionPerformed_switchViews() {
         selectProductPresenter.selectProduct();
 
+        verify(view).selectButtonClick(viewGroup);
+        verify(view).setTransition(viewGroup);
         verify(view).switchViewsAfterTransition();
-    }
-
-    @Test
-    public void selectProduct_productSelected_switchActivity() {
-        selectProductPresenter.selectProduct();
-
-        verify(view).switchActivity();
+        verify(view).setProductTextName();
     }
 
 }

@@ -1,8 +1,15 @@
 package com.moyinoluwa.makeupsearch.presentation.select_product;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Fade;
+import android.transition.Slide;
+import android.transition.TransitionManager;
+import android.transition.TransitionSet;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,7 +34,8 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
         linearLayoutContainer = (LinearLayout) findViewById(R.id.activity_select_product);
         selectProductContainer = (LinearLayout) findViewById(R.id.select_product_container);
 
-        selectProductPresenter = new SelectProductPresenter();
+        selectProductPresenter = new SelectProductPresenter(linearLayoutContainer,
+                linearLayoutContainer);
         selectProductPresenter.attachView(this);
     }
 
@@ -37,6 +45,16 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
 //        // TO:DO pass brand and product as intent extra too
 //        intent.putExtra("product_selected", buttonName);
 //        startActivity(intent);
+    }
+
+    @Override
+    public void setTransition(ViewGroup sceneRoot) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            TransitionManager.beginDelayedTransition(sceneRoot,
+                    new TransitionSet()
+                            .addTransition(new Fade())
+                            .addTransition(new Slide(Gravity.START)));
+        }
     }
 
     @Override
@@ -53,42 +71,43 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
         textViewProductName.setText(buttonName + " from...");
     }
 
+    @Override
     public void selectButtonClick(View view) {
 
         switch (view.getId()) {
             case R.id.button_blush:
-                buttonName = selectProductPresenter.getButtonName(Button.BLUSH);
+                buttonName = Button.BLUSH;
                 break;
             case R.id.button_bronzer:
-                buttonName = selectProductPresenter.getButtonName(Button.BRONZER);
+                buttonName = Button.BRONZER;
                 break;
             case R.id.button_eyebrow:
-                buttonName = selectProductPresenter.getButtonName(Button.EYEBROW);
+                buttonName = Button.EYEBROW;
                 break;
             case R.id.button_eyeliner:
-                buttonName = selectProductPresenter.getButtonName(Button.EYELINER);
+                buttonName = Button.EYELINER;
                 break;
             case R.id.button_eyeshadow:
-                buttonName = selectProductPresenter.getButtonName(Button.EYESHADOW);
+                buttonName = Button.EYESHADOW;
                 break;
             case R.id.button_foundation:
-                buttonName = selectProductPresenter.getButtonName(Button.FOUNDATION);
+                buttonName = Button.FOUNDATION;
                 break;
             case R.id.button_lip_liner:
-                buttonName = selectProductPresenter.getButtonName(Button.LIP_LINER);
+                buttonName = Button.LIP_LINER;
                 break;
             case R.id.button_lipstick:
-                buttonName = selectProductPresenter.getButtonName(Button.LIPSTICK);
+                buttonName = Button.LIPSTICK;
                 break;
             case R.id.button_mascara:
-                buttonName = selectProductPresenter.getButtonName(Button.MASCARA);
+                buttonName = Button.MASCARA;
                 break;
             case R.id.button_nail_polish:
-                buttonName = selectProductPresenter.getButtonName(Button.NAIL_POLISH);
+                buttonName = Button.NAIL_POLISH;
                 break;
         }
 
-        selectProductPresenter.setTransition(linearLayoutContainer);
+        setTransition(linearLayoutContainer);
         switchViewsAfterTransition();
         setProductTextName();
     }
