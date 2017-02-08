@@ -17,6 +17,8 @@
         </activity>
         <activity android:name=".presentation.select_brand.SelectBrandActivity">
         </activity>
+        <activity android:name=".presentation.search.MakeUpSearchActivity">
+        </activity>
     </application>
 
 </manifest>
