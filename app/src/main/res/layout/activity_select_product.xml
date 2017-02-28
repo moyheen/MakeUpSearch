@@ -1,170 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_select_product"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical"
     tools:context="com.moyinoluwa.makeupsearch.presentation.select_product.SelectProductActivity">
 
-    <LinearLayout
-        android:id="@+id/activity_select_product"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView_search_intro"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:orientation="vertical">
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:text="@string/welcome_message"
+        android:textColor="@color/darkerGray"
+        android:textSize="@dimen/welcome_message_text_size"/>
 
-        <TextView
-            android:id="@+id/textView_search_intro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/fifty_dp"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:fontFamily="sans-serif"
-            android:gravity="center"
-            android:text="@string/welcome_message"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/welcome_message_text_size"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/product_recycler_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"/>
 
-        <LinearLayout
-            android:id="@+id/select_product_container"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/activity_half_margin"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/button_eyeshadow"
-                    style="@style/ProductButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_half_margin"
-                    android:layout_marginStart="@dimen/activity_half_margin"
-                    android:onClick="selectButtonClick"
-                    android:text="@string/eyeshadow"/>
-
-                <Button
-                    android:id="@+id/button_foundation"
-                    style="@style/ProductButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_half_margin"
-                    android:layout_marginStart="@dimen/activity_half_margin"
-                    android:onClick="selectButtonClick"
-                    android:text="@string/foundation"/>
-
-                <Button
-                    android:id="@+id/button_lip_liner"
-                    style="@style/ProductButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/activity_half_margin"
-                    android:layout_marginLeft="@dimen/activity_half_margin"
-                    android:layout_marginRight="@dimen/activity_half_margin"
-                    android:layout_marginStart="@dimen/activity_half_margin"
-                    android:onClick="selectButtonClick"
-                    android:text="@string/lip_liner"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/activity_half_margin"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/button_blush"
-                    style="@style/ProductButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_half_margin"
-                    android:layout_marginStart="@dimen/activity_half_margin"
-                    android:onClick="selectButtonClick"
-                    android:text="@string/blush"/>
-
-                <Button
-                    android:id="@+id/button_eyebrow"
-                    style="@style/ProductButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_half_margin"
-                    android:layout_marginStart="@dimen/activity_half_margin"
-                    android:onClick="selectButtonClick"
-                    android:text="@string/eyebrow"/>
-
-                <Button
-                    android:id="@+id/button_eyeliner"
-                    style="@style/ProductButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_half_margin"
-                    android:layout_marginStart="@dimen/activity_half_margin"
-                    android:onClick="selectButtonClick"
-                    android:text="@string/eyeliner"/>
-
-                <Button
-                    android:id="@+id/button_bronzer"
-                    style="@style/ProductButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/activity_half_margin"
-                    android:layout_marginLeft="@dimen/activity_half_margin"
-                    android:layout_marginRight="@dimen/activity_half_margin"
-                    android:layout_marginStart="@dimen/activity_half_margin"
-                    android:onClick="selectButtonClick"
-                    android:text="@string/bronzer"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/activity_half_margin"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/button_lipstick"
-                    style="@style/ProductButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_half_margin"
-                    android:layout_marginStart="@dimen/activity_half_margin"
-                    android:onClick="selectButtonClick"
-                    android:text="@string/lipstick"/>
-
-                <Button
-                    android:id="@+id/button_mascara"
-                    style="@style/ProductButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_half_margin"
-                    android:layout_marginStart="@dimen/activity_half_margin"
-                    android:onClick="selectButtonClick"
-                    android:text="@string/mascara"/>
-
-                <Button
-                    android:id="@+id/button_nail_polish"
-                    style="@style/ProductButtonStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/activity_half_margin"
-                    android:layout_marginLeft="@dimen/activity_half_margin"
-                    android:layout_marginRight="@dimen/activity_half_margin"
-                    android:layout_marginStart="@dimen/activity_half_margin"
-                    android:onClick="selectButtonClick"
-                    android:text="@string/nail_polish"/>
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+</LinearLayout>

@@ -1,16 +1,20 @@
 <resources>
-    <string name="app_name">MakeUpSearch</string>
+    <string name="app_name">MakeUp Search</string>
     <string name="welcome_message">What are you searching for today?</string>
-    <string name="bronzer">bronzer</string>
-    <string name="blush">blush</string>
-    <string name="eyebrow">eyebrow</string>
-    <string name="eyeliner">eyeliner</string>
-    <string name="eyeshadow">eyeshadow</string>
-    <string name="foundation">foundation</string>
-    <string name="lip_liner">lip liner</string>
-    <string name="lipstick">lipstick</string>
-    <string name="mascara">mascara</string>
-    <string name="nail_polish">nail polish</string>
+
+    <string-array name="products_array">
+        <item name="bronzer">bronzer</item>
+        <item name="blush">blush</item>
+        <item name="eyebrow">eyebrow</item>
+        <item name="eyeliner">eyeliner</item>
+        <item name="eyeshadow">eyeshadow</item>
+        <item name="foundation">foundation</item>
+        <item name="lip_liner">lip liner</item>
+        <item name="lipstick">lipstick</item>
+        <item name="mascara">mascara</item>
+        <item name="nail_polish">nail polish</item>
+    </string-array>
+
     <string name="almay">almay</string>
     <string name="anna_sui">anna_sui</string>
     <string name="annabelle">annabellei</string>

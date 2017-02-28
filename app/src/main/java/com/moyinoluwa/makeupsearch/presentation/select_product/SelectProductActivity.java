@@ -3,6 +3,7 @@ package com.moyinoluwa.makeupsearch.presentation.select_product;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.transition.Fade;
 import android.transition.Slide;
 import android.transition.TransitionManager;
@@ -14,7 +15,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.flexbox.FlexWrap;
+import com.google.android.flexbox.FlexboxLayoutManager;
 import com.moyinoluwa.makeupsearch.R;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class SelectProductActivity extends AppCompatActivity implements SelectProductContract.View {
     String buttonName;
@@ -22,6 +28,8 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
     TextView textViewProductName;
     LinearLayout linearLayoutContainer;
     LinearLayout selectProductContainer;
+    RecyclerView recyclerViewProducts;
+    ProductsAdapter productsAdapter;
 
     SelectProductContract.Presenter selectProductPresenter;
 
@@ -31,8 +39,17 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
         setContentView(R.layout.activity_select_product);
 
         textViewSearchIntro = (TextView) findViewById(R.id.textView_search_intro);
-        linearLayoutContainer = (LinearLayout) findViewById(R.id.activity_select_product);
-        selectProductContainer = (LinearLayout) findViewById(R.id.select_product_container);
+        recyclerViewProducts = (RecyclerView) findViewById(R.id.product_recycler_view);
+
+        FlexboxLayoutManager layoutManager = new FlexboxLayoutManager();
+        layoutManager.setFlexWrap(FlexWrap.WRAP);
+
+        String[] products = getResources().getStringArray(R.array.products_array);
+        List<String> productsList = Arrays.asList(products);
+
+        productsAdapter = new ProductsAdapter(productsList);
+        recyclerViewProducts.setLayoutManager(layoutManager);
+        recyclerViewProducts.setAdapter(productsAdapter);
 
         selectProductPresenter = new SelectProductPresenter(linearLayoutContainer,
                 linearLayoutContainer);
@@ -74,38 +91,38 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
     @Override
     public void selectButtonClick(View view) {
 
-        switch (view.getId()) {
-            case R.id.button_blush:
-                buttonName = Button.BLUSH;
-                break;
-            case R.id.button_bronzer:
-                buttonName = Button.BRONZER;
-                break;
-            case R.id.button_eyebrow:
-                buttonName = Button.EYEBROW;
-                break;
-            case R.id.button_eyeliner:
-                buttonName = Button.EYELINER;
-                break;
-            case R.id.button_eyeshadow:
-                buttonName = Button.EYESHADOW;
-                break;
-            case R.id.button_foundation:
-                buttonName = Button.FOUNDATION;
-                break;
-            case R.id.button_lip_liner:
-                buttonName = Button.LIP_LINER;
-                break;
-            case R.id.button_lipstick:
-                buttonName = Button.LIPSTICK;
-                break;
-            case R.id.button_mascara:
-                buttonName = Button.MASCARA;
-                break;
-            case R.id.button_nail_polish:
-                buttonName = Button.NAIL_POLISH;
-                break;
-        }
+//        switch (view.getId()) {
+//            case R.id.button_blush:
+//                buttonName = Button.BLUSH;
+//                break;
+//            case R.id.button_bronzer:
+//                buttonName = Button.BRONZER;
+//                break;
+//            case R.id.button_eyebrow:
+//                buttonName = Button.EYEBROW;
+//                break;
+//            case R.id.button_eyeliner:
+//                buttonName = Button.EYELINER;
+//                break;
+//            case R.id.button_eyeshadow:
+//                buttonName = Button.EYESHADOW;
+//                break;
+//            case R.id.button_foundation:
+//                buttonName = Button.FOUNDATION;
+//                break;
+//            case R.id.button_lip_liner:
+//                buttonName = Button.LIP_LINER;
+//                break;
+//            case R.id.button_lipstick:
+//                buttonName = Button.LIPSTICK;
+//                break;
+//            case R.id.button_mascara:
+//                buttonName = Button.MASCARA;
+//                break;
+//            case R.id.button_nail_polish:
+//                buttonName = Button.NAIL_POLISH;
+//                break;
+//        }
 
         setTransition(linearLayoutContainer);
         switchViewsAfterTransition();

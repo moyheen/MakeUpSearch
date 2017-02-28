@@ -3,6 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="activity_half_margin">8dp</dimen>
+    <dimen name="activity_quarter_margin">4dp</dimen>
     <dimen name="corner_radius_tiny">2dp</dimen>
     <dimen name="fifty_dp">50dp</dimen>
 
