@@ -40,6 +40,7 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
 
         textViewSearchIntro = (TextView) findViewById(R.id.textView_search_intro);
         recyclerViewProducts = (RecyclerView) findViewById(R.id.product_recycler_view);
+        linearLayoutContainer = (LinearLayout) findViewById(R.id.activity_select_product);
 
         FlexboxLayoutManager layoutManager = new FlexboxLayoutManager();
         layoutManager.setFlexWrap(FlexWrap.WRAP);
@@ -62,30 +63,6 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
 //        // TO:DO pass brand and product as intent extra too
 //        intent.putExtra("product_selected", buttonName);
 //        startActivity(intent);
-    }
-
-    @Override
-    public void setTransition(ViewGroup sceneRoot) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            TransitionManager.beginDelayedTransition(sceneRoot,
-                    new TransitionSet()
-                            .addTransition(new Fade())
-                            .addTransition(new Slide(Gravity.START)));
-        }
-    }
-
-    @Override
-    public void switchViewsAfterTransition() {
-        linearLayoutContainer.removeView(selectProductContainer);
-        linearLayoutContainer.removeView(textViewSearchIntro);
-        View child = getLayoutInflater().inflate(R.layout.layout_select_brand, null);
-        textViewProductName = (TextView) child.findViewById(R.id.textView_productname);
-        linearLayoutContainer.addView(child);
-    }
-
-    @Override
-    public void setProductTextName() {
-        textViewProductName.setText(buttonName + " from...");
     }
 
     @Override
@@ -127,6 +104,30 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
         setTransition(linearLayoutContainer);
         switchViewsAfterTransition();
         setProductTextName();
+    }
+
+    @Override
+    public void setTransition(ViewGroup sceneRoot) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            TransitionManager.beginDelayedTransition(sceneRoot,
+                    new TransitionSet()
+                            .addTransition(new Fade())
+                            .addTransition(new Slide(Gravity.START)));
+        }
+    }
+
+    @Override
+    public void switchViewsAfterTransition() {
+        linearLayoutContainer.removeView(textViewSearchIntro);
+        linearLayoutContainer.removeView(recyclerViewProducts);
+        View child = getLayoutInflater().inflate(R.layout.layout_select_brand, null);
+        textViewProductName = (TextView) child.findViewById(R.id.textView_productname);
+        linearLayoutContainer.addView(child);
+    }
+
+    @Override
+    public void setProductTextName() {
+        textViewProductName.setText(buttonName + " from...");
     }
 
     public void selectBrandClick(View view) {
