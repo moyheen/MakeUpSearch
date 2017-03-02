@@ -1,6 +1,5 @@
 package com.moyinoluwa.makeupsearch.presentation.select_product;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,13 +18,12 @@ import com.google.android.flexbox.FlexWrap;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
 import com.moyinoluwa.makeupsearch.R;
-import com.moyinoluwa.makeupsearch.presentation.search.MakeUpSearchActivity;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class SelectProductActivity extends AppCompatActivity implements SelectProductContract
-        .View, ProductsAdapter.ProductsAdapterCallback{
+        .View, ProductsAdapter.ProductsAdapterCallback, BrandsAdapter.BrandsAdapterCallback {
 
     TextView textViewSearchIntro;
     TextView textViewProductName;
@@ -34,8 +32,9 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
     ProductsAdapter productsAdapter;
     RecyclerView recyclerViewBrands;
     BrandsAdapter brandsAdapter;
-
     FlexboxLayoutManager brandsLayoutManager;
+
+    String productName = "";
 
     SelectProductContract.Presenter selectProductPresenter;
 
@@ -66,8 +65,7 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
 
         brandsAdapter = new BrandsAdapter(brandsList);
 
-        // TODO Check the second parameter in the method below
-        selectProductPresenter = new SelectProductPresenter(selectProductContainer, "");
+        selectProductPresenter = new SelectProductPresenter(selectProductContainer, productName);
         selectProductPresenter.attachView(this);
     }
 
@@ -75,15 +73,6 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
         layoutManager.setFlexWrap(FlexWrap.WRAP);
         layoutManager.setAlignItems(AlignItems.BASELINE);
         layoutManager.setJustifyContent(JustifyContent.CENTER);
-    }
-
-    @Override
-    public void switchActivity() {
-        Intent intent = new Intent(this, MakeUpSearchActivity.class);
-        // TODO: pass brand and product as intent extra too
-        intent.putExtra("product_selected", "jjj");
-        intent.putExtra("brand_selected", "nnn");
-        startActivity(intent);
     }
 
     @Override
@@ -110,13 +99,12 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
 
     @Override
     public void setProductTextName(String productName) {
+        this.productName = productName;
         textViewProductName.setText(productName + " from...");
     }
 
-//    @Override
-//    public void onBrandItemClick(View view) {
-//        Toast.makeText(this, "brand clicked", Toast.LENGTH_SHORT).show();
-//
-//        switchActivity();
-//    }
+    @Override
+    public String getProductName() {
+        return productName;
+    }
 }

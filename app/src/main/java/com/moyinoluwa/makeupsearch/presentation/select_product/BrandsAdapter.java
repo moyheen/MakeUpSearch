@@ -1,5 +1,7 @@
 package com.moyinoluwa.makeupsearch.presentation.select_product;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.moyinoluwa.makeupsearch.R;
+import com.moyinoluwa.makeupsearch.presentation.search.MakeUpSearchActivity;
 
 import java.util.List;
 
@@ -16,6 +19,7 @@ import java.util.List;
 
 public class BrandsAdapter extends RecyclerView.Adapter<BrandsAdapter.BrandsViewHolder> {
     private List<String> items;
+    private BrandsAdapterCallback mBrandsAdapterCallback;
 
     BrandsAdapter(List<String> items) {
         this.items = items;
@@ -32,8 +36,18 @@ public class BrandsAdapter extends RecyclerView.Adapter<BrandsAdapter.BrandsView
     @Override
     public void onBindViewHolder(BrandsViewHolder holder, int position) {
         String item = items.get(position);
+        Context context = holder.textViewBrands.getContext();
+        this.mBrandsAdapterCallback = (BrandsAdapter.BrandsAdapterCallback) holder.textViewBrands
+                .getContext();
 
         holder.textViewBrands.setText(item);
+
+        holder.textViewBrands.setOnClickListener(v -> {
+            Intent intent = new Intent(context, MakeUpSearchActivity.class);
+            intent.putExtra("product_selected", mBrandsAdapterCallback.getProductName());
+            intent.putExtra("brand_selected", item);
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -48,5 +62,9 @@ public class BrandsAdapter extends RecyclerView.Adapter<BrandsAdapter.BrandsView
             super(v);
             textViewBrands = (TextView) v.findViewById(R.id.brand_item);
         }
+    }
+
+    public interface BrandsAdapterCallback {
+        String getProductName();
     }
 }

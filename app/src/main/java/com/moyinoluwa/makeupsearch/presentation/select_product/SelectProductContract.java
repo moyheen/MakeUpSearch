@@ -16,8 +16,6 @@ public class SelectProductContract {
         void switchViewsAfterTransition();
 
         void setProductTextName(String productName);
-
-        void switchActivity();
     }
 
     interface Presenter extends MvpPresenter<View> {
