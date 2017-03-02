@@ -24,7 +24,7 @@ public class SelectProductPresenter extends BasePresenter<SelectProductContract.
     public void selectProduct() {
         checkViewAttached();
 
-        getView().selectButtonClick(view);
+        getView().onProductItemClick(view);
         getView().setTransition(sceneRoot);
         getView().switchViewsAfterTransition();
         getView().setProductTextName();

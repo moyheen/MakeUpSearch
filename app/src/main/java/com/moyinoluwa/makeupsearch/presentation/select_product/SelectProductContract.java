@@ -12,10 +12,16 @@ import com.moyinoluwa.makeupsearch.presentation.base.MvpView;
 public class SelectProductContract {
 
     public interface View extends MvpView {
-        public void selectButtonClick(android.view.View view);
+        void onProductItemClick(android.view.View view);
+
+        void onBrandItemClick(android.view.View view);
+
         void setTransition(ViewGroup sceneRoot);
+
         void switchViewsAfterTransition();
+
         void setProductTextName();
+
         void switchActivity();
     }
 
