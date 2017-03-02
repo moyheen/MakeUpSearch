@@ -53,11 +53,8 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
         brandsLayoutManager = new FlexboxLayoutManager();
         setUpFlexboxLayoutManager(brandsLayoutManager);
 
-        String[] products = getResources().getStringArray(R.array.products_array);
-        List<String> productsList = Arrays.asList(products);
-
-        String[] brands = getResources().getStringArray(R.array.brands_array);
-        List<String> brandsList = Arrays.asList(brands);
+        List<String> productsList = getItemList(R.array.products_array);
+        List<String> brandsList = getItemList(R.array.brands_array);
 
         productsAdapter = new ProductsAdapter(productsList);
         recyclerViewProducts.setLayoutManager(layoutManager);
@@ -73,6 +70,11 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
         layoutManager.setFlexWrap(FlexWrap.WRAP);
         layoutManager.setAlignItems(AlignItems.BASELINE);
         layoutManager.setJustifyContent(JustifyContent.CENTER);
+    }
+
+    private List<String> getItemList(int itemId) {
+        String[] items = getResources().getStringArray(itemId);
+        return Arrays.asList(items);
     }
 
     @Override
