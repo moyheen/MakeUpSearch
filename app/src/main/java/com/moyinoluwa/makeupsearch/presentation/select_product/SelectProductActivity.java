@@ -15,8 +15,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.flexbox.AlignItems;
 import com.google.android.flexbox.FlexWrap;
 import com.google.android.flexbox.FlexboxLayoutManager;
+import com.google.android.flexbox.JustifyContent;
 import com.moyinoluwa.makeupsearch.R;
 
 import java.util.Arrays;
@@ -44,6 +46,8 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
 
         FlexboxLayoutManager layoutManager = new FlexboxLayoutManager();
         layoutManager.setFlexWrap(FlexWrap.WRAP);
+        layoutManager.setAlignItems(AlignItems.BASELINE);
+        layoutManager.setJustifyContent(JustifyContent.CENTER);
 
         String[] products = getResources().getStringArray(R.array.products_array);
         List<String> productsList = Arrays.asList(products);

@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.android.flexbox.FlexboxLayoutManager;
 import com.moyinoluwa.makeupsearch.R;
 
 import java.util.List;
@@ -35,13 +34,6 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         String item = items.get(position);
 
         holder.textViewProducts.setText(item);
-
-        ViewGroup.LayoutParams lp = holder.textViewProducts.getLayoutParams();
-        if (lp instanceof FlexboxLayoutManager.LayoutParams) {
-            FlexboxLayoutManager.LayoutParams flexboxLp = (FlexboxLayoutManager.LayoutParams)
-                    holder.textViewProducts.getLayoutParams();
-            flexboxLp.setFlexGrow(1.0f);
-        }
     }
 
     @Override
