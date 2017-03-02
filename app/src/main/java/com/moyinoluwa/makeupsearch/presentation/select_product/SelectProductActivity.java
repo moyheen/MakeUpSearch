@@ -50,14 +50,10 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
         selectProductContainer = (LinearLayout) findViewById(R.id.activity_select_product);
 
         FlexboxLayoutManager layoutManager = new FlexboxLayoutManager();
-        layoutManager.setFlexWrap(FlexWrap.WRAP);
-        layoutManager.setAlignItems(AlignItems.BASELINE);
-        layoutManager.setJustifyContent(JustifyContent.CENTER);
+        setUpFlexboxLayoutManager(layoutManager);
 
         brandsLayoutManager = new FlexboxLayoutManager();
-        brandsLayoutManager.setFlexWrap(FlexWrap.WRAP);
-        brandsLayoutManager.setAlignItems(AlignItems.BASELINE);
-        brandsLayoutManager.setJustifyContent(JustifyContent.CENTER);
+        setUpFlexboxLayoutManager(brandsLayoutManager);
 
         String[] products = getResources().getStringArray(R.array.products_array);
         List<String> productsList = Arrays.asList(products);
@@ -74,6 +70,12 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
         selectProductPresenter = new SelectProductPresenter(selectProductContainer,
                 selectProductContainer);
         selectProductPresenter.attachView(this);
+    }
+
+    private void setUpFlexboxLayoutManager(FlexboxLayoutManager layoutManager) {
+        layoutManager.setFlexWrap(FlexWrap.WRAP);
+        layoutManager.setAlignItems(AlignItems.BASELINE);
+        layoutManager.setJustifyContent(JustifyContent.CENTER);
     }
 
     @Override
