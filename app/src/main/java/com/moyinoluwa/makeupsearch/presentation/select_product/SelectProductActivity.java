@@ -1,5 +1,6 @@
 package com.moyinoluwa.makeupsearch.presentation.select_product;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import com.google.android.flexbox.FlexWrap;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
 import com.moyinoluwa.makeupsearch.R;
+import com.moyinoluwa.makeupsearch.presentation.search.MakeUpSearchActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -80,10 +82,11 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
 
     @Override
     public void switchActivity() {
-//        Intent intent = new Intent(this, SelectBrandActivity.class);
-//        // TO:DO pass brand and product as intent extra too
-//        intent.putExtra("product_selected", buttonName);
-//        startActivity(intent);
+        Intent intent = new Intent(this, MakeUpSearchActivity.class);
+        // TODO: pass brand and product as intent extra too
+        intent.putExtra("product_selected", "jjj");
+        intent.putExtra("brand_selected", "nnn");
+        startActivity(intent);
     }
 
     @Override
@@ -158,7 +161,6 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
     public void onBrandItemClick(View view) {
         Toast.makeText(this, "brand clicked", Toast.LENGTH_SHORT).show();
 
-        //
-        // switchActivity();
+        switchActivity();
     }
 }
