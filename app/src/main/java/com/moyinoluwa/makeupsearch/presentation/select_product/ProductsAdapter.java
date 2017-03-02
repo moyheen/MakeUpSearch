@@ -16,6 +16,7 @@ import java.util.List;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder> {
     private List<String> items;
+    private ProductsAdapterCallback mProductsAdapterCallback;
 
     ProductsAdapter(List<String> items) {
         this.items = items;
@@ -31,9 +32,18 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
 
     @Override
     public void onBindViewHolder(ProductsViewHolder holder, int position) {
+
+        this.mProductsAdapterCallback = (ProductsAdapterCallback) holder.textViewProducts
+                .getContext();
         String item = items.get(position);
 
         holder.textViewProducts.setText(item);
+
+        holder.textViewProducts.setOnClickListener(v -> {
+            mProductsAdapterCallback.setTransition();
+            mProductsAdapterCallback.switchViewsAfterTransition();
+            mProductsAdapterCallback.setProductTextName(item);
+        });
     }
 
     @Override
@@ -48,5 +58,13 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
             super(v);
             textViewProducts = (TextView) v.findViewById(R.id.product_item);
         }
+    }
+
+    public interface ProductsAdapterCallback {
+        void setTransition();
+
+        void switchViewsAfterTransition();
+
+        void setProductTextName(String productName);
     }
 }

@@ -1,7 +1,6 @@
 package com.moyinoluwa.makeupsearch.presentation.select_product;
 
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.moyinoluwa.makeupsearch.presentation.base.BasePresenter;
 
@@ -12,22 +11,21 @@ import com.moyinoluwa.makeupsearch.presentation.base.BasePresenter;
 public class SelectProductPresenter extends BasePresenter<SelectProductContract.View> implements
         SelectProductContract.Presenter {
 
-    private ViewGroup sceneRoot;
     private android.view.View view;
+    private String productName;
 
-    public SelectProductPresenter(ViewGroup viewGroup, View view) {
-        this.sceneRoot = viewGroup;
+    public SelectProductPresenter(View view, String productName) {
         this.view = view;
+        this.productName = productName;
     }
 
     @Override
     public void selectProduct() {
         checkViewAttached();
 
-        getView().onProductItemClick(view);
-        getView().setTransition(sceneRoot);
+        getView().setTransition();
         getView().switchViewsAfterTransition();
-        getView().setProductTextName();
+        getView().setProductTextName(productName);
     }
 
 }

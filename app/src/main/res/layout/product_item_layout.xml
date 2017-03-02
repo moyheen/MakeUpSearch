@@ -7,5 +7,4 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/activity_quarter_margin"
-    android:onClick="onProductItemClick"
     tools:text="product"/>

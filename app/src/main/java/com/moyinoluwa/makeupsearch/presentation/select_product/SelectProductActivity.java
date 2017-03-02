@@ -11,10 +11,8 @@ import android.transition.TransitionManager;
 import android.transition.TransitionSet;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.flexbox.AlignItems;
 import com.google.android.flexbox.FlexWrap;
@@ -26,15 +24,14 @@ import com.moyinoluwa.makeupsearch.presentation.search.MakeUpSearchActivity;
 import java.util.Arrays;
 import java.util.List;
 
-public class SelectProductActivity extends AppCompatActivity implements SelectProductContract.View {
-    String buttonName;
+public class SelectProductActivity extends AppCompatActivity implements SelectProductContract
+        .View, ProductsAdapter.ProductsAdapterCallback{
+
     TextView textViewSearchIntro;
     TextView textViewProductName;
     LinearLayout selectProductContainer;
     RecyclerView recyclerViewProducts;
     ProductsAdapter productsAdapter;
-
-    TextView textViewBrandName;
     RecyclerView recyclerViewBrands;
     BrandsAdapter brandsAdapter;
 
@@ -69,8 +66,8 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
 
         brandsAdapter = new BrandsAdapter(brandsList);
 
-        selectProductPresenter = new SelectProductPresenter(selectProductContainer,
-                selectProductContainer);
+        // TODO Check the second parameter in the method below
+        selectProductPresenter = new SelectProductPresenter(selectProductContainer, "");
         selectProductPresenter.attachView(this);
     }
 
@@ -90,50 +87,9 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
     }
 
     @Override
-    public void onProductItemClick(View view) {
-
-//        switch (view.getId()) {
-//            case R.id.button_blush:
-//                buttonName = Button.BLUSH;
-//                break;
-//            case R.id.button_bronzer:
-//                buttonName = Button.BRONZER;
-//                break;
-//            case R.id.button_eyebrow:
-//                buttonName = Button.EYEBROW;
-//                break;
-//            case R.id.button_eyeliner:
-//                buttonName = Button.EYELINER;
-//                break;
-//            case R.id.button_eyeshadow:
-//                buttonName = Button.EYESHADOW;
-//                break;
-//            case R.id.button_foundation:
-//                buttonName = Button.FOUNDATION;
-//                break;
-//            case R.id.button_lip_liner:
-//                buttonName = Button.LIP_LINER;
-//                break;
-//            case R.id.button_lipstick:
-//                buttonName = Button.LIPSTICK;
-//                break;
-//            case R.id.button_mascara:
-//                buttonName = Button.MASCARA;
-//                break;
-//            case R.id.button_nail_polish:
-//                buttonName = Button.NAIL_POLISH;
-//                break;
-//        }
-
-        setTransition(selectProductContainer);
-        switchViewsAfterTransition();
-        setProductTextName();
-    }
-
-    @Override
-    public void setTransition(ViewGroup sceneRoot) {
+    public void setTransition() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            TransitionManager.beginDelayedTransition(sceneRoot,
+            TransitionManager.beginDelayedTransition(selectProductContainer,
                     new TransitionSet()
                             .addTransition(new Fade())
                             .addTransition(new Slide(Gravity.START)));
@@ -153,14 +109,14 @@ public class SelectProductActivity extends AppCompatActivity implements SelectPr
     }
 
     @Override
-    public void setProductTextName() {
-        textViewProductName.setText(buttonName + " from...");
+    public void setProductTextName(String productName) {
+        textViewProductName.setText(productName + " from...");
     }
 
-    @Override
-    public void onBrandItemClick(View view) {
-        Toast.makeText(this, "brand clicked", Toast.LENGTH_SHORT).show();
-
-        switchActivity();
-    }
+//    @Override
+//    public void onBrandItemClick(View view) {
+//        Toast.makeText(this, "brand clicked", Toast.LENGTH_SHORT).show();
+//
+//        switchActivity();
+//    }
 }
