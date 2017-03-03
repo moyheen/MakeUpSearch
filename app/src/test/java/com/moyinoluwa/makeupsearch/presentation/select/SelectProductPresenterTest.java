@@ -26,11 +26,12 @@ public class SelectProductPresenterTest {
     ViewGroup viewGroup;
 
     private SelectProductPresenter selectProductPresenter;
+    private String PRODUCT_NAME = "bronzer";
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        selectProductPresenter = new SelectProductPresenter(viewGroup, viewGroup);
+        selectProductPresenter = new SelectProductPresenter(viewGroup, PRODUCT_NAME);
         selectProductPresenter.attachView(view);
     }
 
@@ -38,10 +39,9 @@ public class SelectProductPresenterTest {
     public void selectProduct_transitionPerformed_switchViews() {
         selectProductPresenter.selectProduct();
 
-        verify(view).selectButtonClick(viewGroup);
-        verify(view).setTransition(viewGroup);
+        verify(view).setTransition();
         verify(view).switchViewsAfterTransition();
-        verify(view).setProductTextName();
+        verify(view).setProductTextName(PRODUCT_NAME);
     }
 
     @Test(expected = BasePresenter.MvpViewNotAttachedException.class)
@@ -50,10 +50,9 @@ public class SelectProductPresenterTest {
 
         selectProductPresenter.selectProduct();
 
-        verify(view, never()).selectButtonClick(viewGroup);
-        verify(view, never()).setTransition(viewGroup);
+        verify(view, never()).setTransition();
         verify(view, never()).switchViewsAfterTransition();
-        verify(view, never()).setProductTextName();
+        verify(view, never()).setProductTextName(PRODUCT_NAME);
     }
 
 }

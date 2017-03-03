@@ -1,9 +1,13 @@
 package com.moyinoluwa.makeupsearch.presentation.search;
 
 import com.moyinoluwa.makeupsearch.data.MakeUpRepository;
+import com.moyinoluwa.makeupsearch.data.remote.model.MakeUp;
 import com.moyinoluwa.makeupsearch.presentation.base.BasePresenter;
 
+import java.util.List;
+
 import rx.Scheduler;
+import rx.Subscriber;
 
 /**
  * Created by moyinoluwa on 2/8/17.
@@ -23,7 +27,27 @@ public class MakeUpSearchPresenter extends BasePresenter<MakeUpSearchContract.Vi
     }
 
     @Override
-    public void search(String term) {
+    public void search(String product, String brand) {
+        checkViewAttached();
+        getView().showLoading();
+        addSubscription(makeUpRepository.searchMakeUp(product, brand).subscribeOn(ioScheduler)
+                .observeOn(mainScheduler).subscribe(new Subscriber<List<MakeUp>>() {
+                    @Override
+                    public void onCompleted() {
 
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        getView().hideLoading();
+                        getView().showError(e.getMessage());
+                    }
+
+                    @Override
+                    public void onNext(List<MakeUp> makeUps) {
+                        getView().hideLoading();
+                        getView().showSearchResults(makeUps);
+                    }
+                }));
     }
 }

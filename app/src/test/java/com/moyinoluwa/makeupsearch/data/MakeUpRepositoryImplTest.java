@@ -1,7 +1,7 @@
 package com.moyinoluwa.makeupsearch.data;
 
 import com.moyinoluwa.makeupsearch.data.remote.MakeUpProductRestService;
-import com.moyinoluwa.makeupsearch.data.remote.model.MakeUpList;
+import com.moyinoluwa.makeupsearch.data.remote.model.MakeUp;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -50,23 +50,23 @@ public class MakeUpRepositoryImplTest {
                 (Observable.just(makeUpList()));
 
         // When
-        TestSubscriber<List<MakeUpList>> subscriber = new TestSubscriber<>();
+        TestSubscriber<List<MakeUp>> subscriber = new TestSubscriber<>();
         makeUpRepository.searchMakeUp(BRAND_COVERGIRL, PRODUCT_TYPE_LIPSTICK).subscribe(subscriber);
 
         // Then
         subscriber.awaitTerminalEvent();
         subscriber.assertNoErrors();
 
-        List<List<MakeUpList>> onNextEvents = subscriber.getOnNextEvents();
-        List<MakeUpList> makeup = onNextEvents.get(0);
+        List<List<MakeUp>> onNextEvents = subscriber.getOnNextEvents();
+        List<MakeUp> makeup = onNextEvents.get(0);
         Assert.assertEquals(BRAND_COVERGIRL, makeup.get(0).getBrand());
         Assert.assertEquals(PRODUCT_TYPE_LIPSTICK, makeup.get(0).getProductType());
         verify(makeUpProductRestService).searchMakeUpProducts(BRAND_COVERGIRL,
                 PRODUCT_TYPE_LIPSTICK);
     }
 
-    private MakeUpList makeUpList() {
-        MakeUpList makeUpList = new MakeUpList(114, "covergirl", "CoverGirl Outlast Longwear " +
+    private MakeUp makeUpList() {
+        MakeUp makeUp = new MakeUp(114, "covergirl", "CoverGirl Outlast Longwear " +
                 "Lipstick Plum Fury (950)", "10.99", "https://d3t32hsnjxo7q6.cloudfront" +
                 ".net/i/2d46e82f21b11f658a4378abcbd1c31b_ra,w158,h184_pa,w158,h184.png",
                 "https://well.ca/products/covergirl-outlast-longwear-lipstick_105803.html",
@@ -78,7 +78,7 @@ public class MakeUpRepositoryImplTest {
                 "2016-10-01T18:25:52.547Z", "http://makeup-api.herokuapp.com/api/v1/products/114" +
                 ".json", null);
 
-        return makeUpList;
+        return makeUp;
     }
 
     @Test
@@ -88,7 +88,7 @@ public class MakeUpRepositoryImplTest {
                 (getIoExceptionError(), Observable.just(makeUpList()));
 
         // When
-        TestSubscriber<List<MakeUpList>> subscriber = new TestSubscriber<>();
+        TestSubscriber<List<MakeUp>> subscriber = new TestSubscriber<>();
         makeUpRepository.searchMakeUp(BRAND_COVERGIRL, PRODUCT_TYPE_LIPSTICK).subscribe(subscriber);
 
         // Then
@@ -99,7 +99,7 @@ public class MakeUpRepositoryImplTest {
                 PRODUCT_TYPE_LIPSTICK);
     }
 
-    private Observable<MakeUpList> getIoExceptionError() {
+    private Observable<MakeUp> getIoExceptionError() {
         return Observable.error(new IOException());
     }
 
@@ -110,7 +110,7 @@ public class MakeUpRepositoryImplTest {
                 (get403ForbiddenError());
 
         // When
-        TestSubscriber<List<MakeUpList>> subscriber = new TestSubscriber<>();
+        TestSubscriber<List<MakeUp>> subscriber = new TestSubscriber<>();
         makeUpRepository.searchMakeUp(BRAND_COVERGIRL, PRODUCT_TYPE_LIPSTICK).subscribe(subscriber);
 
         // Then
@@ -121,7 +121,7 @@ public class MakeUpRepositoryImplTest {
                 PRODUCT_TYPE_LIPSTICK);
     }
 
-    private Observable<MakeUpList> get403ForbiddenError() {
+    private Observable<MakeUp> get403ForbiddenError() {
         return Observable.error(new HttpException(Response.error(403, ResponseBody.create
                 (MediaType.parse("application/json"), "Forbidden"))));
     }

@@ -1,7 +1,7 @@
 package com.moyinoluwa.makeupsearch.data;
 
 import com.moyinoluwa.makeupsearch.data.remote.MakeUpProductRestService;
-import com.moyinoluwa.makeupsearch.data.remote.model.MakeUpList;
+import com.moyinoluwa.makeupsearch.data.remote.model.MakeUp;
 
 import java.io.IOException;
 import java.util.List;
@@ -21,7 +21,7 @@ public class MakeUpRepositoryImpl implements MakeUpRepository {
     }
 
     @Override
-    public Observable<List<MakeUpList>> searchMakeUp(final String brandName, final String
+    public Observable<List<MakeUp>> searchMakeUp(final String brandName, final String
             productName) {
         return Observable.defer(() -> makeUpProductRestService.searchMakeUpProducts(brandName,
                 productName).toList())

@@ -9,7 +9,7 @@ import java.util.List;
  * Created by moyinoluwa on 2/9/17.
  */
 
-public class MakeUpList {
+public class MakeUp {
 
     @SerializedName("id")
     @Expose
@@ -124,9 +124,9 @@ public class MakeUpList {
         return productColors;
     }
 
-    public MakeUpList(Integer id, String brand, String name, String price, String imageLink,
-                      String productLink, String websiteLink, String description, Object rating,
-                      String category, String productType, List<Object> tagList, String
+    public MakeUp(Integer id, String brand, String name, String price, String imageLink,
+                  String productLink, String websiteLink, String description, Object rating,
+                  String category, String productType, List<Object> tagList, String
                               createdAt, String updatedAt, String productApiUrl, List<Object>
                               productColors) {
         this.id = id;

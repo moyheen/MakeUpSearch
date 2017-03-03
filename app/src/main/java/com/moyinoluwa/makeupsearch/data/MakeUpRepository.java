@@ -1,6 +1,6 @@
 package com.moyinoluwa.makeupsearch.data;
 
-import com.moyinoluwa.makeupsearch.data.remote.model.MakeUpList;
+import com.moyinoluwa.makeupsearch.data.remote.model.MakeUp;
 
 import java.util.List;
 
@@ -12,5 +12,5 @@ import rx.Observable;
 
 public interface MakeUpRepository {
 
-    Observable<List<MakeUpList>> searchMakeUp(String brandName, String productName);
+    Observable<List<MakeUp>> searchMakeUp(String brandName, String productName);
 }

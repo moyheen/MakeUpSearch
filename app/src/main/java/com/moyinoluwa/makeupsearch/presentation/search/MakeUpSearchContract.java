@@ -1,6 +1,6 @@
 package com.moyinoluwa.makeupsearch.presentation.search;
 
-import com.moyinoluwa.makeupsearch.data.remote.model.MakeUpList;
+import com.moyinoluwa.makeupsearch.data.remote.model.MakeUp;
 import com.moyinoluwa.makeupsearch.presentation.base.MvpPresenter;
 import com.moyinoluwa.makeupsearch.presentation.base.MvpView;
 
@@ -13,7 +13,7 @@ import java.util.List;
 public interface MakeUpSearchContract {
 
     interface View extends MvpView {
-        void showSearchResults(List<MakeUpList> makeUpListList);
+        void showSearchResults(List<MakeUp> makeUpList);
 
         void showError(String message);
 
@@ -23,6 +23,6 @@ public interface MakeUpSearchContract {
     }
 
     interface Presenter extends MvpPresenter<MakeUpSearchContract.View> {
-        void search(String term);
+        void search(String product, String brand);
     }
 }
