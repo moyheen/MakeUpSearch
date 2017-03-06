@@ -4,4 +4,4 @@ MakeUp Search is a simple application built from the [Makeup API](http://makeup-
 
 It uses Dagger, Mockito and Espresso for dependency injection and testing respectively.
 
-![alt tag](https://github.com/moyheen/MakeUpSearch/blob/master/app/src/main/res/drawable/product_screenshot.png)
+![alt tag](https://cdn-images-1.medium.com/max/1440/1*Ax5zhpXVoST9pJQ_v5yh8A.png)
