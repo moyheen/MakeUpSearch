@@ -15,6 +15,6 @@ import rx.Observable;
 public interface MakeUpProductRestService {
 
     @GET("http://makeup-api.herokuapp.com/api/v1/products.json?")
-    Observable<List<MakeUp>> searchMakeUpProducts(@Query("brand_name") String brandName, @Query
-            ("product_type_name") String productTypeName);
+    Observable<List<MakeUp>> searchMakeUpProducts(@Query("brand") String brandName, @Query
+            ("product_type") String productTypeName);
 }
