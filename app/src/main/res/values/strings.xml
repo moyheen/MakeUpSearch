@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">MakeUp Search</string>
     <string name="welcome_message">What are you searching for today?</string>
+    <string name="search_for_some_makeup">search for some makeup</string>
 
     <string-array name="products_array">
         <item name="bronzer">bronzer</item>

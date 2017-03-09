@@ -27,10 +27,10 @@ public class MakeUpSearchPresenter extends BasePresenter<MakeUpSearchContract.Vi
     }
 
     @Override
-    public void search(String product, String brand) {
+    public void search(String brand, String product) {
         checkViewAttached();
         getView().showLoading();
-        addSubscription(makeUpRepository.searchMakeUp(product, brand).subscribeOn(ioScheduler)
+        addSubscription(makeUpRepository.searchMakeUp(brand, product).subscribeOn(ioScheduler)
                 .observeOn(mainScheduler).subscribe(new Subscriber<List<MakeUp>>() {
                     @Override
                     public void onCompleted() {

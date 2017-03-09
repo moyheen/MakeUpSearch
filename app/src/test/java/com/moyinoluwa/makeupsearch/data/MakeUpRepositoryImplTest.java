@@ -47,7 +47,7 @@ public class MakeUpRepositoryImplTest {
     public void searchMakeUp_200OkResponse_InvokesCorrectApiCalls() {
         // Given
         when(makeUpProductRestService.searchMakeUpProducts(anyString(), anyString())).thenReturn
-                (Observable.just(makeUpList()));
+                (Observable.just(makeUpList()).toList());
 
         // When
         TestSubscriber<List<MakeUp>> subscriber = new TestSubscriber<>();
@@ -85,7 +85,7 @@ public class MakeUpRepositoryImplTest {
     public void searchMakeUp_IoExceptionThenSuccess_SearchMakeUpRetried() {
         // Given
         when(makeUpProductRestService.searchMakeUpProducts(anyString(), anyString())).thenReturn
-                (getIoExceptionError(), Observable.just(makeUpList()));
+                (getIoExceptionError().toList(), Observable.just(makeUpList()).toList());
 
         // When
         TestSubscriber<List<MakeUp>> subscriber = new TestSubscriber<>();
@@ -107,7 +107,7 @@ public class MakeUpRepositoryImplTest {
     public void searchMakeUp_OtherHttpError_searchTerminatedWithError() {
         // Given
         when(makeUpProductRestService.searchMakeUpProducts(anyString(), anyString())).thenReturn
-                (get403ForbiddenError());
+                (get403ForbiddenError().toList());
 
         // When
         TestSubscriber<List<MakeUp>> subscriber = new TestSubscriber<>();

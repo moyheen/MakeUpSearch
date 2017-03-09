@@ -2,8 +2,10 @@ package com.moyinoluwa.makeupsearch.data.remote;
 
 import com.moyinoluwa.makeupsearch.data.remote.model.MakeUp;
 
+import java.util.List;
+
 import retrofit2.http.GET;
-import retrofit2.http.Path;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -12,7 +14,7 @@ import rx.Observable;
 
 public interface MakeUpProductRestService {
 
-    @GET("/api/v1/products.json?brand={brand_name}&product_type={product_type_name}")
-    Observable<MakeUp> searchMakeUpProducts(@Path("brand_name") String brandName, @Path
+    @GET("http://makeup-api.herokuapp.com/api/v1/products.json?")
+    Observable<List<MakeUp>> searchMakeUpProducts(@Query("brand_name") String brandName, @Query
             ("product_type_name") String productTypeName);
 }

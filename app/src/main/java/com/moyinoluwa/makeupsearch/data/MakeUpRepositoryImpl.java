@@ -21,10 +21,9 @@ public class MakeUpRepositoryImpl implements MakeUpRepository {
     }
 
     @Override
-    public Observable<List<MakeUp>> searchMakeUp(final String brandName, final String
-            productName) {
+    public Observable<List<MakeUp>> searchMakeUp(final String brandName, final String productName) {
         return Observable.defer(() -> makeUpProductRestService.searchMakeUpProducts(brandName,
-                productName).toList())
+                productName))
                 .retryWhen(observable -> observable.flatMap(o -> {
                     if (o instanceof IOException) {
                         return Observable.just(null);
