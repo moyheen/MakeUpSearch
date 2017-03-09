@@ -15,6 +15,8 @@ public interface MakeUpSearchContract {
     interface View extends MvpView {
         void showSearchResults(List<MakeUp> makeUpList);
 
+        void showEmptyState();
+
         void showError(String message);
 
         void showLoading();

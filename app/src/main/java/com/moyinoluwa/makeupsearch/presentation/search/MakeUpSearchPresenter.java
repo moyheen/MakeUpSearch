@@ -46,7 +46,12 @@ public class MakeUpSearchPresenter extends BasePresenter<MakeUpSearchContract.Vi
                     @Override
                     public void onNext(List<MakeUp> makeUps) {
                         getView().hideLoading();
-                        getView().showSearchResults(makeUps);
+
+                        if (makeUps.isEmpty()) {
+                            getView().showEmptyState();
+                        } else {
+                            getView().showSearchResults(makeUps);
+                        }
                     }
                 }));
     }
