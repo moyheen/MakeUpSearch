@@ -57,7 +57,7 @@
         <item name="wetnwild">wet n wild</item>
         <item name="zorah">zorah</item>
     </string-array>
-    <string name="title_activity_display_products_desc">DisplayProductsDescActivity</string>
+
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
