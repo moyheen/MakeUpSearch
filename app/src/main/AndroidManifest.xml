@@ -20,7 +20,6 @@
         <activity android:name=".presentation.search.MakeUpSearchActivity"/>
         <activity
             android:name=".presentation.display_product_desc.DisplayProductsDescActivity"
-            android:label="@string/title_activity_display_products_desc"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
