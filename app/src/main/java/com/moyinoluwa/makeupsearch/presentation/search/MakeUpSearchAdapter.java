@@ -1,18 +1,22 @@
 package com.moyinoluwa.makeupsearch.presentation.search;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.moyinoluwa.makeupsearch.R;
 import com.moyinoluwa.makeupsearch.data.remote.model.MakeUp;
+import com.moyinoluwa.makeupsearch.data.remote.model.ProductColor;
 import com.moyinoluwa.makeupsearch.presentation.display_product_desc.DisplayProductsDescActivity;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -76,11 +80,24 @@ public class MakeUpSearchAdapter extends RecyclerView.Adapter<MakeUpSearchAdapte
 
             if (position != RecyclerView.NO_POSITION) {
                 Intent intent = new Intent(v.getContext(), DisplayProductsDescActivity.class);
+                Bundle bundle = new Bundle();
                 intent.putExtra("name", items.get(position).getName());
                 intent.putExtra("price", items.get(position).getPrice());
                 intent.putExtra("image_link", items.get(position).getImageLink());
                 intent.putExtra("product_link", items.get(position).getProductLink());
                 intent.putExtra("description", items.get(position).getDescription());
+
+                ArrayList<ProductColor> productColorArrayList = new ArrayList<ProductColor>(items
+                        .get(position).getProductColors());
+
+                Toast.makeText(v.getContext(), productColorArrayList.get(0).getColourName(), Toast.LENGTH_SHORT)
+                        .show();
+
+                if (!productColorArrayList.isEmpty()) {
+                    bundle.putParcelableArrayList("product_colors", productColorArrayList);
+                    intent.putExtras(bundle);
+                }
+
                 v.getContext().startActivity(intent);
             }
         }

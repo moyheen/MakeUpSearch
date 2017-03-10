@@ -13,122 +13,62 @@ public class MakeUp {
 
     @SerializedName("id")
     @Expose
-    public Integer id;
+    private Integer id;
     @SerializedName("brand")
     @Expose
-    public String brand;
+    private String brand;
     @SerializedName("name")
     @Expose
-    public String name;
+    private String name;
     @SerializedName("price")
     @Expose
-    public String price;
+    private String price;
     @SerializedName("image_link")
     @Expose
-    public String imageLink;
+    private String imageLink;
     @SerializedName("product_link")
     @Expose
-    public String productLink;
+    private String productLink;
     @SerializedName("website_link")
     @Expose
-    public String websiteLink;
+    private String websiteLink;
     @SerializedName("description")
     @Expose
-    public String description;
+    private String description;
     @SerializedName("rating")
     @Expose
-    public Object rating;
+    private Object rating;
     @SerializedName("category")
     @Expose
-    public String category;
+    private String category;
     @SerializedName("product_type")
     @Expose
-    public String productType;
+    private String productType;
     @SerializedName("tag_list")
     @Expose
-    public List<Object> tagList = null;
+    private List<Object> tagList = null;
     @SerializedName("created_at")
     @Expose
-    public String createdAt;
+    private String createdAt;
     @SerializedName("updated_at")
     @Expose
-    public String updatedAt;
+    private String updatedAt;
     @SerializedName("product_api_url")
     @Expose
-    public String productApiUrl;
+    private String productApiUrl;
     @SerializedName("product_colors")
     @Expose
-    public List<Object> productColors = null;
+    private List<ProductColor> productColors = null;
 
-    public Integer getId() {
-        return id;
+    /**
+     * No args constructor for use in serialization
+     */
+    public MakeUp() {
     }
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public String getImageLink() {
-        return imageLink;
-    }
-
-    public String getProductLink() {
-        return productLink;
-    }
-
-    public String getWebsiteLink() {
-        return websiteLink;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public Object getRating() {
-        return rating;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public String getProductType() {
-        return productType;
-    }
-
-    public List<Object> getTagList() {
-        return tagList;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public String getProductApiUrl() {
-        return productApiUrl;
-    }
-
-    public List<Object> getProductColors() {
-        return productColors;
-    }
-
-    public MakeUp(Integer id, String brand, String name, String price, String imageLink,
-                  String productLink, String websiteLink, String description, Object rating,
-                  String category, String productType, List<Object> tagList, String
-                              createdAt, String updatedAt, String productApiUrl, List<Object>
-                              productColors) {
+    public MakeUp(Integer id, String brand, String name, String price, String imageLink, String
+            productLink, String websiteLink, String description, Object rating, String category, String productType, List<Object> tagList, String createdAt, String updatedAt, String productApiUrl, List<ProductColor> productColors) {
+        super();
         this.id = id;
         this.brand = brand;
         this.name = name;
@@ -146,4 +86,133 @@ public class MakeUp {
         this.productApiUrl = productApiUrl;
         this.productColors = productColors;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getImageLink() {
+        return imageLink;
+    }
+
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
+    }
+
+    public String getProductLink() {
+        return productLink;
+    }
+
+    public void setProductLink(String productLink) {
+        this.productLink = productLink;
+    }
+
+    public String getWebsiteLink() {
+        return websiteLink;
+    }
+
+    public void setWebsiteLink(String websiteLink) {
+        this.websiteLink = websiteLink;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Object getRating() {
+        return rating;
+    }
+
+    public void setRating(Object rating) {
+        this.rating = rating;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getProductType() {
+        return productType;
+    }
+
+    public void setProductType(String productType) {
+        this.productType = productType;
+    }
+
+    public List<Object> getTagList() {
+        return tagList;
+    }
+
+    public void setTagList(List<Object> tagList) {
+        this.tagList = tagList;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getProductApiUrl() {
+        return productApiUrl;
+    }
+
+    public void setProductApiUrl(String productApiUrl) {
+        this.productApiUrl = productApiUrl;
+    }
+
+    public List<ProductColor> getProductColors() {
+        return productColors;
+    }
+
+    public void setProductColors(List<ProductColor> productColors) {
+        this.productColors = productColors;
+    }
+
 }

@@ -20,7 +20,12 @@
         <activity android:name=".presentation.search.MakeUpSearchActivity"/>
         <activity
             android:name=".presentation.display_product_desc.DisplayProductsDescActivity"
+            android:parentActivityName=".presentation.search.MakeUpSearchActivity"
             android:theme="@style/AppTheme.NoActionBar">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".presentation.search.MakeUpSearchActivity"/>
         </activity>
     </application>
 

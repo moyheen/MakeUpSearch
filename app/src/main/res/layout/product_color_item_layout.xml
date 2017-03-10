@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/product_color_item"
+              android:layout_width="20dp"
+              android:layout_height="20dp"
+              android:layout_marginEnd="@dimen/activity_quarter_margin"
+              android:layout_marginRight="@dimen/activity_quarter_margin"
+              android:background="@color/colorAccent"
+              android:orientation="vertical"/>

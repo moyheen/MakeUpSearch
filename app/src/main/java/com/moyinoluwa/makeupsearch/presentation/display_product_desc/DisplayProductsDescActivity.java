@@ -2,12 +2,18 @@ package com.moyinoluwa.makeupsearch.presentation.display_product_desc;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.moyinoluwa.makeupsearch.R;
+import com.moyinoluwa.makeupsearch.data.remote.model.ProductColor;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 
 public class DisplayProductsDescActivity extends AppCompatActivity {
@@ -15,12 +21,15 @@ public class DisplayProductsDescActivity extends AppCompatActivity {
     TextView textViewProductTitle;
     TextView textViewProductPrice;
     TextView textViewProductDescription;
+    RecyclerView productColorContainer;
 
     String name;
     String price;
     String imageLink;
     String productLink;
     String description;
+    ProductColorAdapter productColorAdapter;
+    ArrayList<ProductColor> productColorArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +40,7 @@ public class DisplayProductsDescActivity extends AppCompatActivity {
         textViewProductTitle = (TextView) findViewById(R.id.textView_title);
         textViewProductPrice = (TextView) findViewById(R.id.textView_price);
         textViewProductDescription = (TextView) findViewById(R.id.textView_description);
+        productColorContainer = (RecyclerView) findViewById(R.id.product_color_container);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
@@ -40,6 +50,7 @@ public class DisplayProductsDescActivity extends AppCompatActivity {
         retrieveDataFromIntent();
         setToolbarImage();
         setUiText();
+        setProductColors();
     }
 
     private void retrieveDataFromIntent() {
@@ -50,6 +61,9 @@ public class DisplayProductsDescActivity extends AppCompatActivity {
         imageLink = getIntent().getStringExtra("image_link");
         productLink = getIntent().getStringExtra("product_link");
         description = getIntent().getStringExtra("description");
+
+        Bundle bundle = getIntent().getExtras();
+        productColorArrayList = bundle.getParcelable("product_colors");
     }
 
     private void setToolbarImage() {
@@ -60,5 +74,31 @@ public class DisplayProductsDescActivity extends AppCompatActivity {
         textViewProductTitle.setText(name);
         textViewProductPrice.setText(price);
         textViewProductDescription.setText(description);
+    }
+
+    private void setProductColors() {
+//
+//        if (productColorArrayList != null) {
+//            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,
+//                    LinearLayoutManager.HORIZONTAL, false);
+//
+//            productColorAdapter = new ProductColorAdapter(productColorArrayList);
+//            productColorContainer.setLayoutManager(linearLayoutManager);
+//            productColorContainer.setAdapter(productColorAdapter);
+//            productColorContainer.setVisibility(View.VISIBLE);
+//        }
+
+        productColorArrayList = new ArrayList<ProductColor>();
+        productColorArrayList.add(new ProductColor("#52182c", "Black Brandy"));
+        productColorArrayList.add(new ProductColor("#651738", "Wild Thing"));
+        productColorArrayList.add(new ProductColor("#734942", "Jaguar"));
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,
+                LinearLayoutManager.HORIZONTAL, false);
+
+        productColorAdapter = new ProductColorAdapter(productColorArrayList);
+        productColorContainer.setLayoutManager(linearLayoutManager);
+        productColorContainer.setAdapter(productColorAdapter);
+        productColorContainer.setVisibility(View.VISIBLE);
     }
 }
