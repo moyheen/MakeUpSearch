@@ -61,9 +61,7 @@ public class DisplayProductsDescActivity extends AppCompatActivity {
         imageLink = getIntent().getStringExtra("image_link");
         productLink = getIntent().getStringExtra("product_link");
         description = getIntent().getStringExtra("description");
-
-        Bundle bundle = getIntent().getExtras();
-        productColorArrayList = bundle.getParcelable("product_colors");
+        productColorArrayList = getIntent().getParcelableArrayListExtra("product_colors");
     }
 
     private void setToolbarImage() {
@@ -77,28 +75,15 @@ public class DisplayProductsDescActivity extends AppCompatActivity {
     }
 
     private void setProductColors() {
-//
-//        if (productColorArrayList != null) {
-//            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,
-//                    LinearLayoutManager.HORIZONTAL, false);
-//
-//            productColorAdapter = new ProductColorAdapter(productColorArrayList);
-//            productColorContainer.setLayoutManager(linearLayoutManager);
-//            productColorContainer.setAdapter(productColorAdapter);
-//            productColorContainer.setVisibility(View.VISIBLE);
-//        }
 
-        productColorArrayList = new ArrayList<ProductColor>();
-        productColorArrayList.add(new ProductColor("#52182c", "Black Brandy"));
-        productColorArrayList.add(new ProductColor("#651738", "Wild Thing"));
-        productColorArrayList.add(new ProductColor("#734942", "Jaguar"));
+        if (productColorArrayList != null) {
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,
+                    LinearLayoutManager.HORIZONTAL, false);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,
-                LinearLayoutManager.HORIZONTAL, false);
-
-        productColorAdapter = new ProductColorAdapter(productColorArrayList);
-        productColorContainer.setLayoutManager(linearLayoutManager);
-        productColorContainer.setAdapter(productColorAdapter);
-        productColorContainer.setVisibility(View.VISIBLE);
+            productColorAdapter = new ProductColorAdapter(productColorArrayList);
+            productColorContainer.setLayoutManager(linearLayoutManager);
+            productColorContainer.setAdapter(productColorAdapter);
+            productColorContainer.setVisibility(View.VISIBLE);
+        }
     }
 }

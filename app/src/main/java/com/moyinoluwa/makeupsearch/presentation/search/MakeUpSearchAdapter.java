@@ -90,12 +90,8 @@ public class MakeUpSearchAdapter extends RecyclerView.Adapter<MakeUpSearchAdapte
                 ArrayList<ProductColor> productColorArrayList = new ArrayList<ProductColor>(items
                         .get(position).getProductColors());
 
-                Toast.makeText(v.getContext(), productColorArrayList.get(0).getColourName(), Toast.LENGTH_SHORT)
-                        .show();
-
                 if (!productColorArrayList.isEmpty()) {
-                    bundle.putParcelableArrayList("product_colors", productColorArrayList);
-                    intent.putExtras(bundle);
+                    intent.putParcelableArrayListExtra("product_colors", productColorArrayList);
                 }
 
                 v.getContext().startActivity(intent);

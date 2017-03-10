@@ -31,7 +31,7 @@ public class ProductColor implements Parcelable {
         this.colourName = colourName;
     }
 
-    public ProductColor(Parcel source) {
+    private ProductColor(Parcel source) {
         hexValue = source.readString();
         colourName = source.readString();
     }
